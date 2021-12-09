@@ -1,12 +1,22 @@
-export class GameEngine{
-    AddTokenToPosition(x: any, y: any) {
-        throw new Error("Method not implemented.");
-    }
+import { Board } from "./Board";
+import { Player } from "./Player";
 
-    constructor() { }
+export class GameEngine{
+    board: Board;
+    currentPlayer: Player;
+
+    constructor() {
+        this.board = new Board();
+        this.currentPlayer = Player.CreatePlayers("X", "O");
+     }
 
     render(): any {
-        return "|   |   |   |";
+        return this.board.render();
+    }
+
+    AddTokenToPosition(x: any, y: any) {
+        this.board.add(this.currentPlayer.getToken(), x, y)
+        this.currentPlayer = this.currentPlayer.nextPlayer();
     }
 
 }
