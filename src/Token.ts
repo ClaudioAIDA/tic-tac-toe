@@ -1,5 +1,3 @@
-import { Player } from "./Player";
-
 export class Token{
     
     token: string;
@@ -23,6 +21,7 @@ export class Token{
     static Empty(): Token {
         return new Token(" ");
     }
+
     static Create(token: string): Token {
         return new Token(token);
     }

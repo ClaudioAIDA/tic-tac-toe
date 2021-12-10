@@ -19,4 +19,13 @@ export class GameEngine{
         this.currentPlayer = this.currentPlayer.nextPlayer();
     }
 
+    getGameStatus():GameStatus {
+        throw new Error("Method not implemented.");
+    }
+
+}
+
+export enum GameStatus{
+    WinnerX,
+    WinnerO
 }
