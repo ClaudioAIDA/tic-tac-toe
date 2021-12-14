@@ -17,12 +17,12 @@ export class Board {
         if (!this.board[position].isUsable()) {
             throw new Error("Invalid move: Place taken");
         }
-        this.board[x + y].merge(token);
+        this.board[position].merge(token);
     }
 
     private calculatePosition(x: number, y: number): number {
         if (x >= this.SIZE || y >= this.SIZE) throw new Error("Invalid move: Out of board")
-        return x + (y * this.SIZE);
+        return (x * this.SIZE) + y;
     }
 
     render(): any {
@@ -34,4 +34,12 @@ export class Board {
         render += "|";
         return render;
     } 
+
+    checkWinner() {
+        throw new Error("Method not implemented.");
+    }
+
+    getAvailableMovements() {
+        return this.board.filter(token => token.isUsable()).length;
+    }
 }

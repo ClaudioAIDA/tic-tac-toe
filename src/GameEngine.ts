@@ -5,6 +5,8 @@ export class GameEngine{
     board: Board;
     currentPlayer: Player;
 
+    status: GameStatus = GameStatus.Playing;
+
     constructor() {
         this.board = new Board();
         this.currentPlayer = Player.CreatePlayers("X", "O");
@@ -17,15 +19,25 @@ export class GameEngine{
     AddTokenToPosition(x: any, y: any) {
         this.board.add(this.currentPlayer.getToken(), x, y)
         this.currentPlayer = this.currentPlayer.nextPlayer();
+
+        this.checkGameStatus();
     }
 
-    getGameStatus():GameStatus {
-        throw new Error("Method not implemented.");
+    checkGameStatus() {
+        var availableMovements = this.board.getAvailableMovements();
+        if (availableMovements == 0)
+            this.status = GameStatus.Draw;
+    }
+
+    getGameStatus(): GameStatus {
+        return this.status;
     }
 
 }
 
 export enum GameStatus{
     WinnerX,
-    WinnerO
+    WinnerO,
+    Playing,
+    Draw
 }

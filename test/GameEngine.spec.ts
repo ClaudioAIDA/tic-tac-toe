@@ -40,14 +40,18 @@ describe('GameEngine should', () => {
         expect(() => { game.AddTokenToPosition(10, 0) }).toThrow("Invalid move: Out of board");
     })
 
-    test('give X as a winner when X wins', () => {
+    test('get a draw when there is no available movements', () => {
         var game = new GameEngine();
         game.AddTokenToPosition(0, 0);
         game.AddTokenToPosition(0, 1);
         game.AddTokenToPosition(1, 0);
-        game.AddTokenToPosition(0, 2);
         game.AddTokenToPosition(2, 0);
+        game.AddTokenToPosition(0, 2);
+        game.AddTokenToPosition(1, 1);
+        game.AddTokenToPosition(2, 1);
+        game.AddTokenToPosition(1, 2);
+        game.AddTokenToPosition(2, 2);
 
-        expect(() => { game.getGameStatus() }).toBe(GameStatus.WinnerX);
+        expect(game.getGameStatus()).toBe(GameStatus.Draw);
     })
 })
