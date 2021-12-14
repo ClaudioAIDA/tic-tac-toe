@@ -54,4 +54,17 @@ describe('GameEngine should', () => {
 
         expect(game.getGameStatus()).toBe(GameStatus.Draw);
     })
+
+    test('get X as winner', () => {
+        var game = new GameEngine();
+        game.AddTokenToPosition(0, 0);
+        game.AddTokenToPosition(0, 1);
+        game.AddTokenToPosition(1, 0);
+        game.AddTokenToPosition(1, 2);
+        game.AddTokenToPosition(2, 0);
+
+        expect(game.getGameStatus()).toBe(GameStatus.WinnerX);
+    })
+
+
 })
