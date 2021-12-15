@@ -66,5 +66,17 @@ describe('GameEngine should', () => {
         expect(game.getGameStatus()).toBe(GameStatus.WinnerX);
     })
 
+    test('get O as winner in a diagonal', () => {
+        var game = new GameEngine();
+        game.AddTokenToPosition(0, 1);
+        game.AddTokenToPosition(0, 0);
+        game.AddTokenToPosition(0, 2);
+        game.AddTokenToPosition(1, 1);
+        game.AddTokenToPosition(1, 2);
+        game.AddTokenToPosition(2, 2);
+
+        expect(game.getGameStatus()).toBe(GameStatus.WinnerO);
+    })
+
 
 })
