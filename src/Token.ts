@@ -1,5 +1,5 @@
 export class Token{
-    
+      
     token: string;
 
     constructor(token: string) {
@@ -16,6 +16,14 @@ export class Token{
 
     render() {
         return this.token;
+    }
+
+    is(tokenValue: string) {
+        return tokenValue == this.token;
+    }
+
+    equals(token: Token) {
+        return this.is(token.token);
     }
 
     static Empty(): Token {
